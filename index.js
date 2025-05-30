@@ -33,8 +33,8 @@ async function run() {
         const usersCollection = client.db('gameDB').collection('users');
 
         // ✅ TEMP FIX: Convert all users to have an empty myReviews array
-        await usersCollection.updateMany({}, { $set: { myReviews: [] } });
-        console.log('All user myReviews fields reset to empty arrays.');
+        // await usersCollection.updateMany({}, { $set: { myReviews: [] } });
+        // console.log('All user myReviews fields reset to empty arrays.');
 
         app.get('/games', async (req, res) => {
             const result = await gameCollection.find().toArray();
@@ -130,8 +130,8 @@ app.get('/', (req, res) => {
     res.send('Welcome to my World!')
 })
 
-// app.listen(port, () => {
-//     console.log(`Example app listening on port ${port}`)
-// })
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
 
 module.exports = app;
